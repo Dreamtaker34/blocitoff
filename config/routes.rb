@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   resources :users, only: [:show]
 
   get 'welcome/index'
 
-  root 'welcome#index'
+# Not working, returns User id = nil for params[:id].
+  # authenticated :user do
+  #   root :to => 'users#show', as: :authenticated_root
+  # end
+
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
