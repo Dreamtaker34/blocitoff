@@ -1,0 +1,5 @@
+<%= fields_for :user, @user.items do |f| %>
+    <%= f.text_field :name, placeholder: "Add a to-do!" %>
+
+    <%= f.submit "Save", class: 'btn btn-success' %>
+<% end %>
