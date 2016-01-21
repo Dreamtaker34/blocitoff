@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
 # Not working, returns User id = nil for params[:id].
-  # authenticated :user do
-  #   root :to => 'users#show', as: :authenticated_root
-  # end
+  authenticated :user do
+    root :to => 'users#show', as: :authenticated_root
+  end
 
   root :to => 'welcome#index'
 

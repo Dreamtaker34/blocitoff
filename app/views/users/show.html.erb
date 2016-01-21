@@ -4,11 +4,10 @@
 </div>
 <div class="container">
   <h4>New To-Do</h4>
-  <%= render partial: 'items/form', locals: {user: @user} %>
+  <%= render partial: 'items/form', locals: {user: @user, item: @item} %>
 </div>
 <br>
 <h3>My To-Do List:</h3>
 <% @user.items.each do |item| %>
- <% @item = item %>
- <%= render partial: 'items/item' %>
+ <%= render partial: 'items/item', locals: {item: item} %>
 <% end %>

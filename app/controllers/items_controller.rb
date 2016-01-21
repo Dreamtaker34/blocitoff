@@ -5,10 +5,11 @@ class ItemsController < ApplicationController
   end
 
   def create
+    # raise
     @user = current_user
     @item = Item.create
     @item.user = current_user
-    @item.name = params[:name]
+    @item.assign_attributes(item_params)
 
     if @item.save
       flash[:notice] = "Your to-do was saved."
@@ -17,5 +18,11 @@ class ItemsController < ApplicationController
       flash[:alert] = "Couldn't save your to-do, please try again."
       redirect_to user_show
     end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name)
   end
 end
