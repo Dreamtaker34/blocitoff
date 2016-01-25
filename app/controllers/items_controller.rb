@@ -16,8 +16,28 @@ class ItemsController < ApplicationController
       redirect_to user_path @user
     else
       flash[:alert] = "Couldn't save your to-do, please try again."
-      redirect_to user_show
+      redirect_to user_path current_user
     end
+  end
+
+  def destroy
+
+    # @user = current_user
+    # @item = @user.items.find(params[:id])
+
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "The task was completed and removed."
+    else
+      flash[:alert] = "Failed to remove the task."
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   private
