@@ -19,11 +19,15 @@ users = User.all
 
 puts "#{users.sample[:id]}"
 
-50.times do
-  Item.create!(
-  name: Faker::Lorem.sentence(4),
-  user_id: users.sample[:id],
+100.times do
+  item = Item.create!(
+    name: Faker::Lorem.sentence(4),
+    user_id: users.sample[:id],
   )
+
+  item.update_attribute(:created_at, rand(1.days .. 8.days).ago)
+
+
 end
 items = Item.all
 

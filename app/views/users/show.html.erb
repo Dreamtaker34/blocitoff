@@ -7,7 +7,7 @@
   <%= render partial: 'items/form', locals: {user: @user, item: @item} %>
 </div>
 <br>
-<h3>My To-Do List:</h3>
+<h3>My To-Do List: <small><font style= "color: #126B1D"><%= pluralize(@user.items.count, 'task') %></font> | <%= link_to "Refresh", ""  %></small></h3>
 <% @user.items.each do |item| %>
  <%= render partial: 'items/item', locals: {item: item, user: @user} %>
 <% end %>
