@@ -47,5 +47,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'pundit'
+
 gem 'devise'
 gem 'bootstrap-sass'
